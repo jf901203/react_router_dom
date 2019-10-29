@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+4. 前端路由：
 
-In the project directory, you can run:
+   - 注册路由：<Route path='/about' component={About}>
+   - 当前端浏览器的hash变为#about时，当前路由组件就会变为About组件
+   - 前端路由监听的是url的变化 url的变化会与前端注册的路由path匹配 匹配上了就切换对应的组件   
+   - 前端路由监听的是url的变化
+  
+5. 前端路由是前端路由 后端路由是后台路由
 
-### `npm start`
+6. 前端的路由对应着组件 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+7. ajax请求发送的path会匹配后端的path 并返回响应数据
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+##  后端的路由处理的是前端提交的请求 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. 路劲
+2. 回调函数
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 前端路由处理前端的请求
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. 路劲
+2. 组件
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## hash 哈希值
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. hash值会被历史记录记录
+2. hash是一个锚点 从一个位置跳到另一个位置
+3. 跳的过程不会发送请求
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## https://reacttraining.com/react-router
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## react-router
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. 路由组件
+   - <BrowserRouter>  不带hash
+   - <HashRouter> 带hash
+   - <Redirect> 重定向路由 自动请求路由
+   - <Link>  路由连接
+   - <NavLink> 导航连接
+   - <Route>  注册路由
+   - <Switch> 切换 可以包含多个route
 
-## Learn More
+2. history对象   
+   - history.replace()
+   - history.push()
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. match 对象
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. withRouter对象
 
-### Code Splitting
+##路由模式
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. <BrowserRouter>  不带hash
+2. <HashRouter> 带hash
 
-### Analyzing the Bundle Size
+## web react-router
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. npm install --save react-router-dom
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## 组件
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. 非路由组件
+2. 路由组件 ===>对应路由地址(path)的组件
