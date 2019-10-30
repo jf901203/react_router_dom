@@ -85,11 +85,11 @@
 1. 路由组件
    - <BrowserRouter>  不带hash
    - <HashRouter> 带hash
-   - <Redirect> 重定向路由 自动请求路由
+   - <Redirect> 重定向路由 自动跳转路由 默认跳转to="/home"
    - <Link>  路由连接
    - <NavLink> 导航连接
-   - <Route>  注册路由
-   - <Switch> 切换 可以包含多个route
+   - <Route>  注册路由 也是显示路由组件的地方
+   - <Switch> 切换 可以包含多个route 切换路由的时候 对应显示相应的路由组件
 
 2. history对象   
    - history.replace()
@@ -113,3 +113,32 @@
 
 1. 非路由组件
 2. 路由组件 ===>对应路由地址(path)的组件
+
+
+##嵌套路由 父组件必须是组件路由
+
+1. 路由组件中的路由就叫做嵌套路由
+2. 编写路由组件
+3. 在父路由组件中指定
+    - 路由连接 :<NavLink>
+    - 注册路由 :<Route>
+
+
+## 向路由组件传递参数数据
+
+1. 一般的组件会以标签的形式展现   <News/>
+2. 路由组件并没有以标签的形式展现 <Route path="/home/news" component={News}></Route>
+3. 路由组件没有办法像一般组件那样通过标签属性向组件传递数据
+4. 根据接受到id去查找相关的数据 最后展现
+
+
+## 获取路由传递的参数
+
+1. to= /home/message/${id} ===>path= /home/message/:id  ===>props.match.params.id
+2. to= /home/message/?id=${id} ===>path= /home/message 
+
+
+##Vue中获取路由传递的参数
+
+1. to= /home/detail/${index}  ===> path=/home/detail/:id ===>$route.params.id 获取到标识符
+2. to=/home/detail/?id=${index} path =/home/detail ===>$route.query.id 获取到id标识符
