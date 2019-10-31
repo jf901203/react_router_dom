@@ -115,22 +115,27 @@
 2. 路由组件 ===>对应路由地址(path)的组件
 
 
-##嵌套路由 父组件必须是组件路由
+##嵌套路由流程 父组件必须是路由组件
 
 1. 路由组件中的路由就叫做嵌套路由
 2. 编写路由组件
 3. 在父路由组件中指定
     - 路由连接 :<NavLink>
     - 注册路由 :<Route>
+    - 多个路由组件的必须用Switch 包含Route路由组件
+    - Route注册路由组件
 
 
-## 向路由组件传递参数数据
+## 通过路由连接传递数据
+
+## 向路由组件传递参数数据 通过路由连接传递数据
 
 1. 一般的组件会以标签的形式展现   <News/>
 2. 路由组件并没有以标签的形式展现 <Route path="/home/news" component={News}></Route>
 3. 路由组件没有办法像一般组件那样通过标签属性向组件传递数据
 4. 根据接受到id去查找相关的数据 最后展现
 
+## /home/message/:id id既是占位符也是标识符
 
 ## 获取路由传递的参数
 
@@ -142,3 +147,99 @@
 
 1. to= /home/detail/${index}  ===> path=/home/detail/:id ===>$route.params.id 获取到标识符
 2. to=/home/detail/?id=${index} path =/home/detail ===>$route.query.id 获取到id标识符
+
+
+## 路由连接与非路由连接
+
+1. 路由连接不会发送请求 Link NavLink
+2. a标签就是非路由连接 连接会发生跳转 导致页面刷新
+ 
+
+## vue中的路由显示组件
+
+1. vue中的路由显示组件 <router-view />
+2. React中的路由显示组件 <route/>
+
+
+## React的DOM事件回调函数 onClick 对应的的是一个回调函数
+
+1. onClick={this.handleClick} 这样不可以传递参数
+2. onCLick={ ()=>{this.handleClick(data)} } 这样可传递参数
+
+
+## 路由跳转的两种方式
+
+1. 导航连接 
+2. 编程导航 
+
+## 导航连接 
+
+1. Link to=""
+2. NavLink to=""
+
+## 编程导航 事件触发
+
+1. props.history.push()
+2. props.history.replace()
+
+## 编程式历史记录 回退 前进 事件触发 有历史记录才能前进和后退
+
+1. this.props.history.goBack()
+2. this.props.history.goForward()
+
+## 路由器标签
+
+1. BrowserRouter
+2. HashRouter
+
+
+## 路由切换标签
+
+1. NavLink 激活之后会有一个类 activeClass
+2. Link 没有激活类
+3. Redirect 默认切换
+
+
+## 路由显示标签
+
+1. Route 单个路由显示
+2. Switch 可以包含多个Route路由显示
+
+
+## 路由属性 props 当使用上路由器之后组件都拥有一个props对象
+
+1. props.match.params 获取路由传递的参数
+2. props.location
+3. props.history
+
+
+## props.history
+
+1. props.history.push(path)    编程式导航 会往历史记录栈中添加记录
+2. props.history.replace(path) 编程式导航 会替换史记记录
+3. props.history.goBack()
+4. props.history.goForward()
+
+
+## React-ui
+
+1. material-ui(国外)
+2. ant-design (国内蚂蚁金服)
+3. https://ant.design/index-cn pc端
+4. https://mobile.ant.design/index-cn 移动端
+
+
+## 解决300ms秒
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	  <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+	  <script>
+	    if ('addEventListener' in document) {
+	      document.addEventListener('DOMContentLoaded', function() {
+	        FastClick.attach(document.body);
+	      }, false);
+	    }
+	    if(!window.Promise) {
+	      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+	    }
+	  </script>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {NavLink,Route} from 'react-router-dom'
+import {Route,NavLink} from 'react-router-dom'
 import Detail from './detail/Detail'
 export default class Message extends Component {
   state={
@@ -20,6 +20,21 @@ export default class Message extends Component {
 
     },1000)
   }
+  
+  pushLink=(id)=>{
+    this.props.history.push(`/home/message/detail/${id}`)
+  }
+
+  replaceLink=(id)=>{
+    this.props.history.replace(`/home/message/detail/${id}`)
+  }
+
+  handleBack=()=>{
+    this.props.history.goBack()
+  }
+  handleFor=()=>{
+    this.props.history.goForward()
+  }
   render() {
     const {messages}=this.state
   
@@ -30,13 +45,18 @@ export default class Message extends Component {
           {
             messages.map((item,index)=>
             <li key={index}>
-              <a href={`/home/message/detail/${item.id}`}>{item.text}</a>
-              <button>查看push详情</button>
-              <button>查看replace详情</button>
+              <NavLink to={`/home/message/detail/${item.id}`}>{item.text}</NavLink>
+              <button onClick={()=>{this.pushLink(item.id)}}>查看push详情</button>
+              <button onClick={()=>this.replaceLink(item.id)}>查看replace详情</button>
             </li>)
           }
         </ul>
+        <p>
+          <button onClick={this.handleBack}>后退</button>
+          <button onClick={this.handleFor}>前进</button>
+        </p>
         <div>
+          
           <Route path="/home/message/detail/:id" component={Detail}></Route>
         </div>
       </div>

@@ -1,41 +1,27 @@
-import React, { Component } from 'react'
 
-export default class Detail extends Component {
-  // 详情页的数据库
-  state={
-    messages:[
-      {id:1,text:'message001',comtent:'我爱你,中国'},
-      {id:2,text:'message002',comtent:'我爱你,老婆'},
-      {id:3,text:'message003',comtent:'我爱你,孩子'}
-    ],
-    message:null
-  }
+import React from 'react'
+// 全局作用域
+const massges=[
+  {id:1,text:'massge001',content:'我爱你,中国'},
+  {id:2,text:'massge002',content:'我爱你,老婆'},
+  {id:3,text:'massge003',content:'我爱你,孩子'}
+]
+ 
+// 局部作用域
+export default function Detail(props){
+  // 数据类型的隐式转换
+  const id=props.match.params.id*1
+  // 返回第一个结果为true的数组元素
+  const massege=massges.find((item)=>item.id===id)
+  return(
+   <div>
+     <ul>
+       <li>ID:{massege.id}</li>
+       <li>TEXT:{massege.text}</li>
+       <li>CONTENT:{massege.content}</li>
+     </ul>
+   </div>
 
+  )
 
-  componentDidMount(){
-    
-   const id=this.props.match.params.id*1
-   const {messages}=this.state
-   const message=messages.find((item)=>item.id===id)
-
-   this.setState({
-    message
-   })
-   
-   
-  }
-  // 根据条件查询数据库
-  render() {
-   
-    const {message}=this.state
-    
-    return (
-      <div>
-        <h1>sss</h1>
-        <ul>
-          <li>1111</li>
-        </ul>
-      </div>
-    )
-  }
 }
